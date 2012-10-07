@@ -1,0 +1,17 @@
+
+div.other {
+	position:relative;
+	float:left;
+	background:#00ffff;
+	width:100%;
+	padding:1em;
+}
+
+div.ui {
+	background:inherit;
+	width:auto;
+	border:1px solid #ff0000;
+	position:relative;
+	float:left;
+	padding:5em;
+}
