@@ -16,7 +16,12 @@ $(document).ready(function(){
 			};
 			if(target!==undefined){
 				$(this).click(function(e){
-					$('#'+this.target).load(this.href);
+					$('#'+this.target).load(
+						this.href,
+						function(){
+							$("div.ui", 'div#'+this.id).each(uisetup);
+						}
+					);
 					e.preventDefault();
 				});
 			};
