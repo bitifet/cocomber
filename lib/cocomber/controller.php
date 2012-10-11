@@ -1,7 +1,7 @@
 <?php
 
 // Global parameters:
-$fw_fw = 'framework'; // Framework base directory.
+$fw_fw = 'cocomber'; // Framework base directory.
 $fw_base = 'app'; // Application's base directory.
 
 // Will be defined in config processing:
@@ -13,8 +13,8 @@ $fw_tpl = null; // Template to use.
 $fw_html_headers = array(
 	"<meta charset=UTF-8>",
 	"<meta name=generator content=\"vim 7.0\">",
-	"<script src=\"framework/lib/jquery/jquery.js\" type=\"text/javascript\"></script>",
-	"<script src=\"framework/lib/yawf/yawf.js\" type=\"text/javascript\"></script>",
+	"<script src=\"cocomber/lib/jquery/jquery.js\" type=\"text/javascript\"></script>",
+	"<script src=\"cocomber/lib/cocomber/cocomber.js\" type=\"text/javascript\"></script>",
 );
 
 try {
@@ -28,7 +28,7 @@ try {
 	) {
 
 		// Use default framework routing policys:
-		list ($fw_ui, $fw_tpl) = require ("{$fw_fw}/internal/routing.php");
+		list ($fw_ui, $fw_tpl, $fw_type) = require ("{$fw_fw}/internal/routing.php");
 
 		if (! is_dir ($d = dirname ($f))) {
 			throw new Exception ("Application directory ({$d}) doesn't exist.");
@@ -36,11 +36,11 @@ try {
 			throw new Exception ("Routing policy file doesn't exist or isn't readable.");
 		};
 	} else try {
-		list ($fw_ui, $fw_tpl) = require ($f);
+		list ($fw_ui, $fw_tpl, $fw_type) = require ($f);
 	} catch (Exception $e2) {
 
 		// Use default framework routing policys:
-		list ($fw_ui, $fw_tpl) = require ("{$fw_fw}/internal/routing.php");
+		list ($fw_ui, $fw_tpl, $fw_type) = require ("{$fw_fw}/internal/routing.php");
 
 		throw new Exception ("Error occurred while processing routing polic file ({$f}):\n" . $e2->getMessage());
 	};
@@ -49,8 +49,8 @@ try {
 
 } catch (Exception $e) {
 
-	$fw_base = 'framework'; // Switch to framework.
-	$fw_app = 'internal';
+	$fw_base = 'cocomber'; // Switch to framework.
+	$fw_app = 'appfw';
 	$fw_ui = 'error';
 
 	$tpl_message = $e->getMessage();
@@ -58,8 +58,8 @@ try {
 };
 
 
-$fw_tpl_path = "{$fw_base}/{$fw_app}/tpl/{$fw_tpl}.tpl.php";
-$fw_ui_path = "{$fw_base}/{$fw_app}/ui/{$fw_ui}.ui.php";
+$fw_tpl_path = "{$fw_base}/{$fw_app}/tpl/{$fw_type}/{$fw_tpl}.tpl.php";
+$fw_ui_path = "{$fw_base}/{$fw_app}/ui/{$fw_type}/{$fw_ui}.ui.php";
 
 
 @ is_null ($style = $fw_config['style']) && $style = 'default'; // Enable $config css switching.

@@ -9,12 +9,14 @@ if (
 ) {
 	return array (
 		$path,	// Directly path as user interface path.
-		null		// Doesn't use any template.
+		null,		// Doesn't use any template.
+		'widgets'
 	);
 } else {
 	return array (
 		'default',	// Redirect to 'default' user interface.
-		'default'	// User 'default' template.
+		'default',	// User 'default' template.
+		'pages'
 	);
 };
 
