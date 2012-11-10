@@ -8,3 +8,4 @@
 <div class="other" id="footer">
 	<p>Non .ui layer</p>
 </div>
+<?php return false; ?>

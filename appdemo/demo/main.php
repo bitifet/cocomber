@@ -1,10 +1,17 @@
 <?php
+namespace CocomberFramework;
 
-$fw_conf = array (
+require_once ('cocomber/lib/cocomber/controller.php');
+
+isset ($_SESSION['cocomber_fw'])
+|| $_SESSION['cocomber_fw'] = new Cocomber (array (
 	'app' => 'demo',
 	'title' => 'COCOMBER demo',
 	// 'style' => 'default',
-);
+));
+$c =& $_SESSION['cocomber_fw'];
 
+$c->set_layout ('title', "Cocomber Framework DEMO");
+$c->set_layout ('heading', "Cocomber Framework DEMO");
 
-require_once ('cocomber/lib/cocomber/controller.php');
+$c->render();
