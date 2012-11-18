@@ -1,6 +1,6 @@
 <h3>Contents:</h3>
-<div id="container1">
-	<div class="ui" id="pages/page1"></div>
+<div class="box" id="container1">
+	<a class="ui auto" href="#pages/page1"></a>
 </div>
 
 

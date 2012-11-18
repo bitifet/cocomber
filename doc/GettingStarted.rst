@@ -1,8 +1,8 @@
 ==================
 Cocomber Framework
 ==================
-   :Date: Thu20121011-1705
-   :Version: 0.1_alpha
+   :Date: Thu20121118-1520
+   :Version: 0.2_alpha
    :Authors: - Joan Miquel Torres<joanmi@bitifet.net>
 
 =====================
@@ -16,7 +16,16 @@ INTRODUCTION:
 FEATURES:
 ---------
 
-   ...
+  * Codeless advanced Ajax features. Simply assigning the 'ui' class to your
+    html tags and they acquire new powerfull features.
+  * Hight modularity: Implement small user interfaces (UI)s and reuse
+    them anywhere.
+  * Better user experience: UIs are rendered in parallell. This means
+    that slower parts of the document will not hold up others.
+  * Templating and layout handling. But easy to avoid if you want for
+    smaller applications or to achieve faster response in any UI.
+  * Short start up time. Just a few html rows to achieve working
+    interface.
 
 
 PREREQUISITES:
@@ -86,6 +95,25 @@ BASIC CONCEPTS:
            template and then surrounded by the applicable layout.
          - A yet formatted output to be surrounded by layout (bypassing
            templating process).
+      UIs can load other UIs inside them or any part of the document.
+      Examples:
+         * Load UI inside div at startup:
+::
+           <div>
+             <a class="ui auto" href="#path/to/ui">Loading...</a>
+             <!-- The "Loading..." text is optional -->
+           </div>
+          
+         * Load UI inside another div clicking an anchor:
+::
+           <div id="menu">
+             <a class="ui" target="container" href="#pages/page1">Page 1</a>
+             <a class="ui" target="container" href="#pages/page2">Page 2</a>
+             <a class="ui" target="container" href="#pages/page3">Page 3</a>
+           </div>
+           <div id="container"></div>
+
+
 
 CONTROLLER:
 -----------
@@ -169,8 +197,9 @@ following url:
 Then, whenever you request this url, default routing policy will return
 the following result:
 
-   User Interface (UI): pages/default.ui.php Template:
-   pages/default.tpl.php Layout: default.layout.php
+   User Interface (UI): pages/default.ui.php
+   Template: pages/default.tpl.php
+   Layout: default.layout.php
 
 This means that user interface in app/my_app/ui/pages/default.ui.php
 will be executed.
@@ -289,5 +318,11 @@ appfw/
 LICENSE
 -------
 
-   Licensing info.
+  * Cocomber framework is licensed under the General Public License version 3 (GPLv3).
+  * Third party softwere included in it can be under other licenses. See
+    /LICENSING.rst for more detailed info.
+  
+
+
+
 
